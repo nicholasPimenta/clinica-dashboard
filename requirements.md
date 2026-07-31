@@ -1,1 +1,3 @@
-<p>Este Projeto a partir desse commit será uma Página voltada para um Formulário Clínico com Opções para Impressão em Papel.<p>
+# Formulário Clínico
+
+A partir deste commit, o projeto será uma página voltada para um formulário clínico com opções para impressão em papel.
