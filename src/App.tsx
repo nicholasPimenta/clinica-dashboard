@@ -1,5 +1,7 @@
+import DocumentGenerator from "./pages/DocumentGenerator";
+
 function App() {
-  return <h1>Hello World</h1>
+  return <DocumentGenerator />
 }
 
 export default App;
