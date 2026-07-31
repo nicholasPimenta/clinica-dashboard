@@ -86,7 +86,7 @@ export function DashboardLayout() {
           <div>
             <p className="text-sm font-medium">Painel médico</p>
             <p className="text-xs text-muted-foreground">
-              Quinta-feira, 9 de julho
+              Quinta-feira, 10 de julho
             </p>
           </div>
 
