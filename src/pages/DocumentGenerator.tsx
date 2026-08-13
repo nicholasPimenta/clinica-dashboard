@@ -22,6 +22,9 @@ const exames = ["Lorem", "Ipsum", "Dolor", "Sit", "Amet"] as const
 function DocumentGenerator() {
   return (
     <main className="container mx-auto py-8">
+      <header>
+        <img src="img/LogoProvisorio.png" alt="Logo" className="mx-auto my-4 size-1/4" />
+      </header>
       <section>
         <div>
           <Combobox items={exames}>
@@ -30,7 +33,11 @@ function DocumentGenerator() {
               <ComboboxEmpty>Sem Exames Encontrados</ComboboxEmpty>
               <ComboboxList>
                 {(item) => (
-                  <ComboboxItem className="cursor-pointer" key={item} value={item}>
+                  <ComboboxItem
+                    className="cursor-pointer"
+                    key={item}
+                    value={item}
+                  >
                     {item}
                   </ComboboxItem>
                 )}
@@ -47,13 +54,21 @@ function DocumentGenerator() {
             </FieldLegend>
             <FieldGroup className="gap-3">
               <Field orientation="horizontal">
-                <Checkbox id="habitos-saudaveis" name="habitos-saudaveis" className="cursor-pointer" />
+                <Checkbox
+                  id="habitos-saudaveis"
+                  name="habitos-saudaveis"
+                  className="cursor-pointer"
+                />
                 <FieldLabel htmlFor="habitos-saudaveis" className="font-normal">
                   Hábitos de Vida Saudáveis
                 </FieldLabel>
               </Field>
               <Field orientation="horizontal">
-                <Checkbox id="habitos-tabagismo" name="habitos-tabagismo" className="cursor-pointer" />
+                <Checkbox
+                  id="habitos-tabagismo"
+                  name="habitos-tabagismo"
+                  className="cursor-pointer"
+                />
                 <FieldLabel htmlFor="habitos-tabagismo" className="font-normal">
                   Tabagismo
                 </FieldLabel>
@@ -72,7 +87,11 @@ function DocumentGenerator() {
                 </FieldLabel>
               </Field>
               <Field orientation="horizontal">
-                <Checkbox id="habitos-etilismo" name="habitos-etilismo" className="cursor-pointer" />
+                <Checkbox
+                  id="habitos-etilismo"
+                  name="habitos-etilismo"
+                  className="cursor-pointer"
+                />
                 <FieldLabel htmlFor="habitos-etilismo" className="font-normal">
                   Etilismo
                 </FieldLabel>
@@ -87,13 +106,21 @@ function DocumentGenerator() {
             </FieldLegend>
             <FieldGroup className="gap-3">
               <Field orientation="horizontal">
-                <Checkbox id="cronico-dm" name="cronico-dm" className="cursor-pointer" />
+                <Checkbox
+                  id="cronico-dm"
+                  name="cronico-dm"
+                  className="cursor-pointer"
+                />
                 <FieldLabel htmlFor="cronico-dm" className="font-normal">
                   DM
                 </FieldLabel>
               </Field>
               <Field orientation="horizontal">
-                <Checkbox id="cronico-has" name="cronico-has" className="cursor-pointer" />
+                <Checkbox
+                  id="cronico-has"
+                  name="cronico-has"
+                  className="cursor-pointer"
+                />
                 <FieldLabel htmlFor="cronico-has" className="font-normal">
                   HAS
                 </FieldLabel>
@@ -112,7 +139,11 @@ function DocumentGenerator() {
                 </FieldLabel>
               </Field>
               <Field orientation="horizontal">
-                <Checkbox id="cronico-nenhuma" name="cronico-nenhuma" className="cursor-pointer" />
+                <Checkbox
+                  id="cronico-nenhuma"
+                  name="cronico-nenhuma"
+                  className="cursor-pointer"
+                />
                 <FieldLabel htmlFor="cronico-nenhuma" className="font-normal">
                   Nenhuma
                 </FieldLabel>
@@ -127,13 +158,21 @@ function DocumentGenerator() {
             </FieldLegend>
             <FieldGroup className="gap-3">
               <Field orientation="horizontal">
-                <Checkbox id="familiar-dm" name="familiar-dm" className="cursor-pointer" />
+                <Checkbox
+                  id="familiar-dm"
+                  name="familiar-dm"
+                  className="cursor-pointer"
+                />
                 <FieldLabel htmlFor="familiar-dm" className="font-normal">
                   DM
                 </FieldLabel>
               </Field>
               <Field orientation="horizontal">
-                <Checkbox id="familiar-has" name="familiar-has" className="cursor-pointer" />
+                <Checkbox
+                  id="familiar-has"
+                  name="familiar-has"
+                  className="cursor-pointer"
+                />
                 <FieldLabel htmlFor="familiar-has" className="font-normal">
                   HAS
                 </FieldLabel>
@@ -165,7 +204,11 @@ function DocumentGenerator() {
                 </FieldLabel>
               </Field>
               <Field orientation="horizontal">
-                <Checkbox id="familiar-nenhuma" name="familiar-nenhuma" className="cursor-pointer" />
+                <Checkbox
+                  id="familiar-nenhuma"
+                  name="familiar-nenhuma"
+                  className="cursor-pointer"
+                />
                 <FieldLabel htmlFor="familiar-nenhuma" className="font-normal">
                   Nenhuma
                 </FieldLabel>
@@ -179,7 +222,10 @@ function DocumentGenerator() {
           <FieldSet className="w-full">
             <FieldGroup>
               <Field>
-                <FieldLabel htmlFor="feedback" className="pt-4 font-extrabold text-lg">
+                <FieldLabel
+                  htmlFor="feedback"
+                  className="pt-4 text-lg font-extrabold"
+                >
                   Observações
                 </FieldLabel>
                 <Textarea id="feedback" rows={4} />
@@ -187,8 +233,8 @@ function DocumentGenerator() {
             </FieldGroup>
           </FieldSet>
         </div>
-        <div className="flex pt-4 justify-center">
-            <Button className="cursor-pointer text-lg p-6">Imprimir</Button>
+        <div className="flex justify-center pt-4">
+          <Button className="cursor-pointer p-6 text-lg">Imprimir</Button>
         </div>
       </section>
     </main>
