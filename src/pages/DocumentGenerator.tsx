@@ -437,7 +437,13 @@ function DocumentGenerator() {
         </div>
       </section>
       <section>
-        <PrintPreview />
+        <PrintPreview 
+          obs={obs} 
+          exameSelecionado={exameSelecionado} 
+          habitos={habitos} 
+          historicoCronico={historicoCronico}
+          historicoFamiliar={historicoFamiliar}
+        />
       </section>
     </main>
   )
