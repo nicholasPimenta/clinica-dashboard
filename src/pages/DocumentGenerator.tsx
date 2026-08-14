@@ -20,8 +20,29 @@ import { useState } from "react"
 
 const exames = ["Lorem", "Ipsum", "Dolor", "Sit", "Amet"] as const
 
-function DocumentGenerator() {
+const HABITOS_INICIAIS = {
+  habitosSaudaveis: false,
+  tabagismo: false,
+  sedentarismo: false,
+  etilismo: false,
+}
 
+const HISTORICO_CRONICO_INICIAL = {
+  dm: false,
+  has: false,
+  dislipidemia: false,
+  nenhuma: false,
+}
+
+const HISTORICO_FAMILIAR_INICIAL = {
+  dm: false,
+  has: false,
+  dislipidemia: false,
+  coronariana: false,
+  nenhuma: false,
+}
+
+function DocumentGenerator() {
   const [exameSelecionado, setExameSelecionado] = useState<string | null>(null)
 
   const [habitos, setHabitos] = useState({
@@ -59,7 +80,11 @@ function DocumentGenerator() {
       </header>
       <section>
         <div>
-          <Combobox items={exames} value={exameSelecionado} onValueChange={(value) => setExameSelecionado(value)}>
+          <Combobox
+            items={exames}
+            value={exameSelecionado}
+            onValueChange={(value) => setExameSelecionado(value)}
+          >
             <ComboboxInput placeholder="Escolha um Exame" />
             <ComboboxContent>
               <ComboboxEmpty>Sem Exames Encontrados</ComboboxEmpty>
@@ -377,38 +402,35 @@ function DocumentGenerator() {
                 >
                   Observações
                 </FieldLabel>
-                <Textarea id="feedback" rows={4} value={obs} onChange={(e) => setObs(e.target.value)} />
+                <Textarea
+                  id="feedback"
+                  rows={4}
+                  value={obs}
+                  onChange={(e) => setObs(e.target.value)}
+                />
               </Field>
             </FieldGroup>
           </FieldSet>
         </div>
-        <div className="flex justify-center pt-4 gap-4">
-          <Button className="cursor-pointer p-6 text-lg" onClick={() => {
-            setObs("")
-            setHabitos({
-              habitosSaudaveis: false,
-              tabagismo: false,
-              sedentarismo: false,
-              etilismo: false,
-            })
-            setHistoricoCronico({
-              dm: false,
-              has: false,
-              dislipidemia: false,
-              nenhuma: false,
-            })
-            setHistoricoFamiliar({
-              dm: false,
-              has: false,
-              dislipidemia: false,
-              coronariana: false,
-              nenhuma: false,
-            })
-            setExameSelecionado(null)
-          }}>
+        <div className="flex justify-center gap-4 pt-4">
+          <Button
+            className="cursor-pointer p-6 text-lg"
+            onClick={() => {
+              setObs("")
+              setHabitos(HABITOS_INICIAIS)
+              setHistoricoCronico(HISTORICO_CRONICO_INICIAL)
+              setHistoricoFamiliar(HISTORICO_FAMILIAR_INICIAL)
+              setExameSelecionado(null)
+            }}
+          >
             Limpar
           </Button>
-          <Button className="cursor-pointer p-6 text-lg" onClick={() => window.print()}>Imprimir</Button>
+          <Button
+            className="cursor-pointer p-6 text-lg"
+            onClick={() => window.print()}
+          >
+            Imprimir
+          </Button>
         </div>
       </section>
     </main>
