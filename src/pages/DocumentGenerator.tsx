@@ -382,7 +382,7 @@ function DocumentGenerator() {
             </FieldGroup>
           </FieldSet>
         </div>
-        <div className="flex justify-center pt-4">
+        <div className="flex justify-center pt-4 gap-4">
           <Button className="cursor-pointer p-6 text-lg" onClick={() => {
             setObs("")
             setHabitos({
@@ -408,7 +408,7 @@ function DocumentGenerator() {
           }}>
             Limpar
           </Button>
-          <Button className="cursor-pointer p-6 text-lg">Imprimir</Button>
+          <Button className="cursor-pointer p-6 text-lg" onClick={() => window.print()}>Imprimir</Button>
         </div>
       </section>
     </main>
