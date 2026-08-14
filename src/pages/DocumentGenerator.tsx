@@ -21,6 +21,9 @@ import { useState } from "react"
 const exames = ["Lorem", "Ipsum", "Dolor", "Sit", "Amet"] as const
 
 function DocumentGenerator() {
+
+  const [exameSelecionado, setExameSelecionado] = useState<string | null>(null)
+
   const [habitos, setHabitos] = useState({
     habitosSaudaveis: false,
     tabagismo: false,
@@ -56,7 +59,7 @@ function DocumentGenerator() {
       </header>
       <section>
         <div>
-          <Combobox items={exames}>
+          <Combobox items={exames} value={exameSelecionado} onValueChange={(value) => setExameSelecionado(value)}>
             <ComboboxInput placeholder="Escolha um Exame" />
             <ComboboxContent>
               <ComboboxEmpty>Sem Exames Encontrados</ComboboxEmpty>
@@ -401,6 +404,7 @@ function DocumentGenerator() {
               coronariana: false,
               nenhuma: false,
             })
+            setExameSelecionado(null)
           }}>
             Limpar
           </Button>
