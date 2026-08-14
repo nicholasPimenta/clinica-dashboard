@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/field"
 import { Textarea } from "@/components/ui/textarea"
 import { useState } from "react"
+import PrintPreview from "@/components/print/PrintPreview";
 
 const exames = ["Lorem", "Ipsum", "Dolor", "Sit", "Amet"] as const
 
@@ -434,6 +435,9 @@ function DocumentGenerator() {
             Imprimir
           </Button>
         </div>
+      </section>
+      <section>
+        <PrintPreview />
       </section>
     </main>
   )
