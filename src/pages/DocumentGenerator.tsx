@@ -380,6 +380,30 @@ function DocumentGenerator() {
           </FieldSet>
         </div>
         <div className="flex justify-center pt-4">
+          <Button className="cursor-pointer p-6 text-lg" onClick={() => {
+            setObs("")
+            setHabitos({
+              habitosSaudaveis: false,
+              tabagismo: false,
+              sedentarismo: false,
+              etilismo: false,
+            })
+            setHistoricoCronico({
+              dm: false,
+              has: false,
+              dislipidemia: false,
+              nenhuma: false,
+            })
+            setHistoricoFamiliar({
+              dm: false,
+              has: false,
+              dislipidemia: false,
+              coronariana: false,
+              nenhuma: false,
+            })
+          }}>
+            Limpar
+          </Button>
           <Button className="cursor-pointer p-6 text-lg">Imprimir</Button>
         </div>
       </section>
