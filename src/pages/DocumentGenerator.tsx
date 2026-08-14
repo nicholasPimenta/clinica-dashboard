@@ -69,6 +69,14 @@ function DocumentGenerator() {
 
   const [obs, setObs] = useState("")
 
+  function handleLimpar() {
+    setObs("")
+    setHabitos(HABITOS_INICIAIS)
+    setHistoricoCronico(HISTORICO_CRONICO_INICIAL)
+    setHistoricoFamiliar(HISTORICO_FAMILIAR_INICIAL)
+    setExameSelecionado(null)
+  }
+
   return (
     <main className="container mx-auto py-8">
       <header>
@@ -415,13 +423,7 @@ function DocumentGenerator() {
         <div className="flex justify-center gap-4 pt-4">
           <Button
             className="cursor-pointer p-6 text-lg"
-            onClick={() => {
-              setObs("")
-              setHabitos(HABITOS_INICIAIS)
-              setHistoricoCronico(HISTORICO_CRONICO_INICIAL)
-              setHistoricoFamiliar(HISTORICO_FAMILIAR_INICIAL)
-              setExameSelecionado(null)
-            }}
+            onClick={handleLimpar}
           >
             Limpar
           </Button>
