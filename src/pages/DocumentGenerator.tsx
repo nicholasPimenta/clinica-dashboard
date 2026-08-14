@@ -43,6 +43,8 @@ function DocumentGenerator() {
     nenhuma: false,
   })
 
+  const [obs, setObs] = useState("")
+
   return (
     <main className="container mx-auto py-8">
       <header>
@@ -372,7 +374,7 @@ function DocumentGenerator() {
                 >
                   Observações
                 </FieldLabel>
-                <Textarea id="feedback" rows={4} />
+                <Textarea id="feedback" rows={4} value={obs} onChange={(e) => setObs(e.target.value)} />
               </Field>
             </FieldGroup>
           </FieldSet>
