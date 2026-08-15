@@ -117,8 +117,8 @@ function DocumentGenerator() {
               </Combobox>
             </div>
           </section>
-          <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div>
+          <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-6">
+            <div className="border rounded-lg shadow-sm px-4 pb-4">
               <FieldSet>
                 <FieldLegend className="pt-4 font-extrabold data-[variant=legend]:text-lg">
                   Hábitos de Vida
@@ -207,7 +207,7 @@ function DocumentGenerator() {
                 </FieldGroup>
               </FieldSet>
             </div>
-            <div>
+            <div className="border rounded-lg shadow-sm px-4 pb-4">
               <FieldSet>
                 <FieldLegend className="pt-4 font-extrabold data-[variant=legend]:text-lg">
                   Histórico de Doença Crônica
@@ -302,7 +302,7 @@ function DocumentGenerator() {
                 </FieldGroup>
               </FieldSet>
             </div>
-            <div>
+            <div className="border rounded-lg shadow-sm px-4 pb-4">
               <FieldSet>
                 <FieldLegend className="pt-4 font-extrabold data-[variant=legend]:text-lg">
                   Histórico Familiar
