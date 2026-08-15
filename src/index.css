@@ -128,3 +128,16 @@
     @apply font-sans;
     }
 }
+
+@page {
+  size: A4 portrait;
+  margin: 0;
+}
+
+@media print {
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+}

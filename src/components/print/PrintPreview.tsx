@@ -127,4 +127,4 @@ const PrintPreview = ({
   </div>
 )
 
-export default PrintPreview
+export default PrintPreview;

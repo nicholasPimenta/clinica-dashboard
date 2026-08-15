@@ -80,14 +80,14 @@ function DocumentGenerator() {
 
   return (
     <main className="container mx-auto py-8">
-      <header>
+      <header className="print:hidden">
         <img
           src="img/LogoProvisorio.png"
           alt="Logo"
           className="mx-auto my-4 size-1/4"
         />
       </header>
-      <section>
+      <section className="print:hidden">
         <div>
           <Combobox
             items={exames}
@@ -112,7 +112,7 @@ function DocumentGenerator() {
           </Combobox>
         </div>
       </section>
-      <section>
+      <section className="print:hidden">
         <div>
           <FieldSet>
             <FieldLegend className="pt-4 font-extrabold data-[variant=legend]:text-lg">
@@ -400,7 +400,7 @@ function DocumentGenerator() {
           </FieldSet>
         </div>
       </section>
-      <section>
+      <section className="print:hidden">
         <div>
           <FieldSet className="w-full">
             <FieldGroup>
@@ -436,7 +436,7 @@ function DocumentGenerator() {
           </Button>
         </div>
       </section>
-      <section>
+      <section className="hidden print:block">
         <PrintPreview 
           obs={obs} 
           exameSelecionado={exameSelecionado} 
