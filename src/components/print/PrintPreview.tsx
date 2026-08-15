@@ -118,7 +118,7 @@ const PrintPreview = ({
       </div>
       <div className="mt-4">
         <h2 className="text-lg font-semibold">Observações</h2>
-        <p className="min-h-[25mm] break-words whitespace-pre-wrap">{obs}</p>
+        <p className="min-h-[25mm] wrap-break-word whitespace-pre-wrap">{obs}</p>
       </div>
     </main>
     <footer className="mt-6 pt-4 text-sm">

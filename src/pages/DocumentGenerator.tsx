@@ -81,7 +81,7 @@ function DocumentGenerator() {
   return (
     <>
       <div className="min-h-screen bg-muted/30 print:hidden">
-      <main className="w-full mx-auto py-8 max-w-7xl px-4 md:px-8 lg:px-12">  
+        <main className="mx-auto w-full max-w-7xl px-4 py-8 md:px-8 lg:px-12">
           <header>
             <img
               src="/img/LogoProvisorio.png"
@@ -117,8 +117,8 @@ function DocumentGenerator() {
               </Combobox>
             </div>
           </section>
-          <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-6">
-            <div className="border rounded-lg shadow-sm px-4 pb-4">
+          <section className="mt-6 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <div className="rounded-lg border px-4 pb-4 shadow-sm">
               <FieldSet>
                 <FieldLegend className="pt-4 font-extrabold data-[variant=legend]:text-lg">
                   Hábitos de Vida
@@ -207,7 +207,7 @@ function DocumentGenerator() {
                 </FieldGroup>
               </FieldSet>
             </div>
-            <div className="border rounded-lg shadow-sm px-4 pb-4">
+            <div className="rounded-lg border px-4 pb-4 shadow-sm">
               <FieldSet>
                 <FieldLegend className="pt-4 font-extrabold data-[variant=legend]:text-lg">
                   Histórico de Doença Crônica
@@ -302,7 +302,7 @@ function DocumentGenerator() {
                 </FieldGroup>
               </FieldSet>
             </div>
-            <div className="border rounded-lg shadow-sm px-4 pb-4">
+            <div className="rounded-lg border px-4 pb-4 shadow-sm">
               <FieldSet>
                 <FieldLegend className="pt-4 font-extrabold data-[variant=legend]:text-lg">
                   Histórico Familiar
@@ -431,12 +431,20 @@ function DocumentGenerator() {
                     >
                       Observações
                     </FieldLabel>
-                    <Textarea
-                      id="feedback"
-                      rows={4}
-                      value={obs}
-                      onChange={(e) => setObs(e.target.value)}
-                    />
+                    <div>
+                      <Textarea
+                        id="feedback"
+                        rows={5}
+                        value={obs}
+                        onChange={(e) => setObs(e.target.value)}
+                        maxLength={600}
+                        placeholder="Registre observações clínicas relevantes..."
+                        className="overflow-y-auto border-input bg-background p-3 shadow-sm field-sizing-fixed"
+                      />
+                      <span className="text-sm text-muted-foreground mt-2 block text-end">
+                        {obs.length}/600
+                      </span>
+                    </div>
                   </Field>
                 </FieldGroup>
               </FieldSet>
