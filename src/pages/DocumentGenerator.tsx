@@ -439,9 +439,9 @@ function DocumentGenerator() {
                         onChange={(e) => setObs(e.target.value)}
                         maxLength={600}
                         placeholder="Registre observações clínicas relevantes..."
-                        className="overflow-y-auto border-input bg-background p-3 shadow-sm field-sizing-fixed"
+                        className="field-sizing-fixed overflow-y-auto border-input bg-background p-3 shadow-sm"
                       />
-                      <span className="text-sm text-muted-foreground mt-2 block text-end">
+                      <span className="mt-2 block text-end text-sm text-muted-foreground">
                         {obs.length}/600
                       </span>
                     </div>
@@ -452,15 +452,16 @@ function DocumentGenerator() {
             <div className="flex justify-center gap-4 pt-4">
               <Button
                 className="cursor-pointer p-6 text-lg"
-                onClick={handleLimpar}
-              >
-                Limpar
-              </Button>
-              <Button
-                className="cursor-pointer p-6 text-lg"
                 onClick={() => window.print()}
               >
                 Imprimir
+              </Button>
+              <Button
+                className="cursor-pointer p-6 text-lg"
+                onClick={handleLimpar}
+                variant="outline"
+              >
+                Limpar
               </Button>
             </div>
           </section>
