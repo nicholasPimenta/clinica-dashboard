@@ -128,9 +128,12 @@ function DocumentGenerator() {
               alt="Logo"
               className="mx-auto my-4 w-1/4 max-w-56"
             />
-            <h1 className="mb-6 text-center text-xl font-bold">
+            <h1 className="mb-2 text-center text-xl font-bold">
               Formulário para Impressão
             </h1>
+            <p className="mt-2 mb-4 text-sm text-center text-muted-foreground">
+              Preencha as informações clínicas para gerar o documento.
+            </p>
           </header>
           <section>
             <div>
@@ -160,7 +163,7 @@ function DocumentGenerator() {
                   aria-describedby={
                     erros.exameSelecionado ? "exame-erro" : undefined
                   }
-                  className="aria-invalid:border-destructive"
+                  className="h-11 rounded-lg border-input bg-background shadow-sm aria-invalid:border-destructive"
                 />
                 <ComboboxContent>
                   <ComboboxEmpty>Sem Exames Encontrados</ComboboxEmpty>
@@ -190,7 +193,7 @@ function DocumentGenerator() {
                 aria-invalid={erros.habitos}
                 aria-describedby={erros.habitos ? "habitos-erro" : undefined}
               >
-                <FieldLegend className="pt-4 font-extrabold data-[variant=legend]:text-lg">
+                <FieldLegend className="border-l-4 border-primary pt-4 pl-3 font-extrabold data-[variant=legend]:text-lg">
                   Hábitos de Vida
                 </FieldLegend>
                 <FieldGroup className="gap-3">
@@ -313,7 +316,7 @@ function DocumentGenerator() {
                   erros.historicoCronico ? "cronico-erro" : undefined
                 }
               >
-                <FieldLegend className="pt-4 font-extrabold data-[variant=legend]:text-lg">
+                <FieldLegend className="border-l-4 border-primary pt-4 pl-3 font-extrabold data-[variant=legend]:text-lg">
                   Histórico de Doença Crônica
                 </FieldLegend>
                 <FieldGroup className="gap-3">
@@ -442,7 +445,7 @@ function DocumentGenerator() {
                   erros.historicoFamiliar ? "familiar-erro" : undefined
                 }
               >
-                <FieldLegend className="pt-4 font-extrabold data-[variant=legend]:text-lg">
+                <FieldLegend className="border-l-4 border-primary pt-4 pl-3 font-extrabold data-[variant=legend]:text-lg">
                   Histórico Familiar
                 </FieldLegend>
                 <FieldGroup className="gap-3">
@@ -612,7 +615,7 @@ function DocumentGenerator() {
                         onChange={(e) => setObs(e.target.value)}
                         maxLength={600}
                         placeholder="Registre observações clínicas relevantes..."
-                        className="field-sizing-fixed overflow-y-auto border-input bg-background p-3 shadow-sm"
+                        className="field-sizing-fixed overflow-y-auto border-input bg-background p-3 shadow-sm clinical-scrollbar"
                       />
                       <span className="mt-2 block text-end text-sm text-muted-foreground">
                         {obs.length}/600
