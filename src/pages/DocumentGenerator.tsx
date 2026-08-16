@@ -137,9 +137,31 @@ function DocumentGenerator() {
               <Combobox
                 items={exames}
                 value={exameSelecionado}
-                onValueChange={(value) => setExameSelecionado(value)}
+                onValueChange={(value) => {
+                  setExameSelecionado(value)
+                  if (value) {
+                    setErros((errosAtuais) => ({
+                      ...errosAtuais,
+                      exameSelecionado: false,
+                    }))
+                  }
+                }}
               >
-                <ComboboxInput placeholder="Escolha um Exame" />
+                <FieldLabel
+                  htmlFor="exame"
+                  className="mb-2 text-lg font-semibold"
+                >
+                  Exame
+                </FieldLabel>
+                <ComboboxInput
+                  placeholder="Escolha um Exame"
+                  id="exame"
+                  aria-invalid={erros.exameSelecionado}
+                  aria-describedby={
+                    erros.exameSelecionado ? "exame-erro" : undefined
+                  }
+                  className="aria-invalid:border-destructive"
+                />
                 <ComboboxContent>
                   <ComboboxEmpty>Sem Exames Encontrados</ComboboxEmpty>
                   <ComboboxList>
@@ -156,15 +178,18 @@ function DocumentGenerator() {
                 </ComboboxContent>
               </Combobox>
               {erros.exameSelecionado && (
-                <p className="mt-1 text-sm text-destructive">
+                <p className="mt-1 text-sm text-destructive" id="exame-erro">
                   Selecione um Exame antes de Imprimir.
                 </p>
               )}
             </div>
           </section>
           <section className="mt-6 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-            <div className="rounded-lg border px-4 pb-4 shadow-sm">
-              <FieldSet>
+            <div className="rounded-lg border px-4 pb-4 shadow-sm has-aria-invalid:border-destructive">
+              <FieldSet
+                aria-invalid={erros.habitos}
+                aria-describedby={erros.habitos ? "habitos-erro" : undefined}
+              >
                 <FieldLegend className="pt-4 font-extrabold data-[variant=legend]:text-lg">
                   Hábitos de Vida
                 </FieldLegend>
@@ -175,12 +200,18 @@ function DocumentGenerator() {
                       name="habitos-saudaveis"
                       className="cursor-pointer"
                       checked={habitos.habitosSaudaveis}
-                      onCheckedChange={(checked) =>
+                      onCheckedChange={(checked) => {
                         setHabitos((habitosAtuais) => ({
                           ...habitosAtuais,
                           habitosSaudaveis: checked,
                         }))
-                      }
+                        if (checked) {
+                          setErros((errosAtuais) => ({
+                            ...errosAtuais,
+                            habitos: false,
+                          }))
+                        }
+                      }}
                     />
                     <FieldLabel
                       htmlFor="habitos-saudaveis"
@@ -195,12 +226,18 @@ function DocumentGenerator() {
                       name="habitos-tabagismo"
                       className="cursor-pointer"
                       checked={habitos.tabagismo}
-                      onCheckedChange={(checked) =>
+                      onCheckedChange={(checked) => {
                         setHabitos((habitosAtuais) => ({
                           ...habitosAtuais,
                           tabagismo: checked,
                         }))
-                      }
+                        if (checked) {
+                          setErros((errosAtuais) => ({
+                            ...errosAtuais,
+                            habitos: false,
+                          }))
+                        }
+                      }}
                     />
                     <FieldLabel
                       htmlFor="habitos-tabagismo"
@@ -215,12 +252,18 @@ function DocumentGenerator() {
                       name="habitos-sedentarismo"
                       className="cursor-pointer"
                       checked={habitos.sedentarismo}
-                      onCheckedChange={(checked) =>
+                      onCheckedChange={(checked) => {
                         setHabitos((habitosAtuais) => ({
                           ...habitosAtuais,
                           sedentarismo: checked,
                         }))
-                      }
+                        if (checked) {
+                          setErros((errosAtuais) => ({
+                            ...errosAtuais,
+                            habitos: false,
+                          }))
+                        }
+                      }}
                     />
                     <FieldLabel
                       htmlFor="habitos-sedentarismo"
@@ -235,12 +278,18 @@ function DocumentGenerator() {
                       name="habitos-etilismo"
                       className="cursor-pointer"
                       checked={habitos.etilismo}
-                      onCheckedChange={(checked) =>
+                      onCheckedChange={(checked) => {
                         setHabitos((habitosAtuais) => ({
                           ...habitosAtuais,
                           etilismo: checked,
                         }))
-                      }
+                        if (checked) {
+                          setErros((errosAtuais) => ({
+                            ...errosAtuais,
+                            habitos: false,
+                          }))
+                        }
+                      }}
                     />
                     <FieldLabel
                       htmlFor="habitos-etilismo"
@@ -252,13 +301,18 @@ function DocumentGenerator() {
                 </FieldGroup>
               </FieldSet>
               {erros.habitos && (
-                <p className="mt-1 text-sm text-destructive">
+                <p className="mt-1 text-sm text-destructive" id="habitos-erro">
                   Selecione pelo menos um hábito antes de Imprimir.
                 </p>
               )}
             </div>
-            <div className="rounded-lg border px-4 pb-4 shadow-sm">
-              <FieldSet>
+            <div className="rounded-lg border px-4 pb-4 shadow-sm has-aria-invalid:border-destructive">
+              <FieldSet
+                aria-invalid={erros.historicoCronico}
+                aria-describedby={
+                  erros.historicoCronico ? "cronico-erro" : undefined
+                }
+              >
                 <FieldLegend className="pt-4 font-extrabold data-[variant=legend]:text-lg">
                   Histórico de Doença Crônica
                 </FieldLegend>
@@ -269,13 +323,19 @@ function DocumentGenerator() {
                       name="cronico-dm"
                       className="cursor-pointer"
                       checked={historicoCronico.dm}
-                      onCheckedChange={(checked) =>
+                      onCheckedChange={(checked) => {
                         setHistoricoCronico((historicoAtual) => ({
                           ...historicoAtual,
                           dm: checked,
                           nenhuma: false,
                         }))
-                      }
+                        if (checked) {
+                          setErros((errosAtuais) => ({
+                            ...errosAtuais,
+                            historicoCronico: false,
+                          }))
+                        }
+                      }}
                     />
                     <FieldLabel htmlFor="cronico-dm" className="font-normal">
                       DM
@@ -287,13 +347,19 @@ function DocumentGenerator() {
                       name="cronico-has"
                       className="cursor-pointer"
                       checked={historicoCronico.has}
-                      onCheckedChange={(checked) =>
+                      onCheckedChange={(checked) => {
                         setHistoricoCronico((historicoAtual) => ({
                           ...historicoAtual,
                           has: checked,
                           nenhuma: false,
                         }))
-                      }
+                        if (checked) {
+                          setErros((errosAtuais) => ({
+                            ...errosAtuais,
+                            historicoCronico: false,
+                          }))
+                        }
+                      }}
                     />
                     <FieldLabel htmlFor="cronico-has" className="font-normal">
                       HAS
@@ -305,13 +371,19 @@ function DocumentGenerator() {
                       name="cronico-dislipidemia"
                       className="cursor-pointer"
                       checked={historicoCronico.dislipidemia}
-                      onCheckedChange={(checked) =>
+                      onCheckedChange={(checked) => {
                         setHistoricoCronico((historicoAtual) => ({
                           ...historicoAtual,
                           dislipidemia: checked,
                           nenhuma: false,
                         }))
-                      }
+                        if (checked) {
+                          setErros((errosAtuais) => ({
+                            ...errosAtuais,
+                            historicoCronico: false,
+                          }))
+                        }
+                      }}
                     />
                     <FieldLabel
                       htmlFor="cronico-dislipidemia"
@@ -340,6 +412,12 @@ function DocumentGenerator() {
                             nenhuma: false,
                           }))
                         }
+                        if (checked) {
+                          setErros((errosAtuais) => ({
+                            ...errosAtuais,
+                            historicoCronico: false,
+                          }))
+                        }
                       }}
                     />
                     <FieldLabel
@@ -352,13 +430,18 @@ function DocumentGenerator() {
                 </FieldGroup>
               </FieldSet>
               {erros.historicoCronico && (
-                <p className="mt-1 text-sm text-destructive">
+                <p className="mt-1 text-sm text-destructive" id="cronico-erro">
                   Selecione pelo menos um Histórico Crônico antes de Imprimir.
                 </p>
               )}
             </div>
-            <div className="rounded-lg border px-4 pb-4 shadow-sm">
-              <FieldSet>
+            <div className="rounded-lg border px-4 pb-4 shadow-sm has-aria-invalid:border-destructive">
+              <FieldSet
+                aria-invalid={erros.historicoFamiliar}
+                aria-describedby={
+                  erros.historicoFamiliar ? "familiar-erro" : undefined
+                }
+              >
                 <FieldLegend className="pt-4 font-extrabold data-[variant=legend]:text-lg">
                   Histórico Familiar
                 </FieldLegend>
@@ -369,13 +452,19 @@ function DocumentGenerator() {
                       name="familiar-dm"
                       className="cursor-pointer"
                       checked={historicoFamiliar.dm}
-                      onCheckedChange={(checked) =>
+                      onCheckedChange={(checked) => {
                         setHistoricoFamiliar((familiarAtual) => ({
                           ...familiarAtual,
                           dm: checked,
                           nenhuma: false,
                         }))
-                      }
+                        if (checked) {
+                          setErros((errosAtuais) => ({
+                            ...errosAtuais,
+                            historicoFamiliar: false,
+                          }))
+                        }
+                      }}
                     />
                     <FieldLabel htmlFor="familiar-dm" className="font-normal">
                       DM
@@ -387,13 +476,19 @@ function DocumentGenerator() {
                       name="familiar-has"
                       className="cursor-pointer"
                       checked={historicoFamiliar.has}
-                      onCheckedChange={(checked) =>
+                      onCheckedChange={(checked) => {
                         setHistoricoFamiliar((familiarAtual) => ({
                           ...familiarAtual,
                           has: checked,
                           nenhuma: false,
                         }))
-                      }
+                        if (checked) {
+                          setErros((errosAtuais) => ({
+                            ...errosAtuais,
+                            historicoFamiliar: false,
+                          }))
+                        }
+                      }}
                     />
                     <FieldLabel htmlFor="familiar-has" className="font-normal">
                       HAS
@@ -405,13 +500,19 @@ function DocumentGenerator() {
                       name="familiar-dislipidemia"
                       className="cursor-pointer"
                       checked={historicoFamiliar.dislipidemia}
-                      onCheckedChange={(checked) =>
+                      onCheckedChange={(checked) => {
                         setHistoricoFamiliar((familiarAtual) => ({
                           ...familiarAtual,
                           dislipidemia: checked,
                           nenhuma: false,
                         }))
-                      }
+                        if (checked) {
+                          setErros((errosAtuais) => ({
+                            ...errosAtuais,
+                            historicoFamiliar: false,
+                          }))
+                        }
+                      }}
                     />
                     <FieldLabel
                       htmlFor="familiar-dislipidemia"
@@ -426,13 +527,19 @@ function DocumentGenerator() {
                       name="familiar-coronariana"
                       className="cursor-pointer"
                       checked={historicoFamiliar.coronariana}
-                      onCheckedChange={(checked) =>
+                      onCheckedChange={(checked) => {
                         setHistoricoFamiliar((familiarAtual) => ({
                           ...familiarAtual,
                           coronariana: checked,
                           nenhuma: false,
                         }))
-                      }
+                        if (checked) {
+                          setErros((errosAtuais) => ({
+                            ...errosAtuais,
+                            historicoFamiliar: false,
+                          }))
+                        }
+                      }}
                     />
                     <FieldLabel
                       htmlFor="familiar-coronariana"
@@ -462,6 +569,12 @@ function DocumentGenerator() {
                             nenhuma: false,
                           }))
                         }
+                        if (checked) {
+                          setErros((errosAtuais) => ({
+                            ...errosAtuais,
+                            historicoFamiliar: false,
+                          }))
+                        }
                       }}
                     />
                     <FieldLabel
@@ -474,7 +587,7 @@ function DocumentGenerator() {
                 </FieldGroup>
               </FieldSet>
               {erros.historicoFamiliar && (
-                <p className="mt-1 text-sm text-destructive">
+                <p className="mt-1 text-sm text-destructive" id="familiar-erro">
                   Selecione pelo menos um Histórico Familiar antes de Imprimir.
                 </p>
               )}
