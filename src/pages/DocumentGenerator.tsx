@@ -68,6 +68,13 @@ function DocumentGenerator() {
     nenhuma: false,
   })
 
+  const [erros, setErros] = useState({
+    habitos: false,
+    historicoCronico: false,
+    historicoFamiliar: false,
+    exameSelecionado: false,
+  })
+
   const [obs, setObs] = useState("")
 
   function handleLimpar() {
@@ -76,6 +83,39 @@ function DocumentGenerator() {
     setHistoricoCronico(HISTORICO_CRONICO_INICIAL)
     setHistoricoFamiliar(HISTORICO_FAMILIAR_INICIAL)
     setExameSelecionado(null)
+    setErros({
+      habitos: false,
+      historicoCronico: false,
+      historicoFamiliar: false,
+      exameSelecionado: false,
+    })
+  }
+
+  function handleImprimir() {
+    const exameInvalido = exameSelecionado === null
+    const habitosInvalido = !Object.values(habitos).some((value) => value)
+    const historicoCronicoInvalido = !Object.values(historicoCronico).some(
+      (value) => value
+    )
+    const historicoFamiliarInvalido = !Object.values(historicoFamiliar).some(
+      (value) => value
+    )
+
+    setErros({
+      exameSelecionado: exameInvalido,
+      habitos: habitosInvalido,
+      historicoCronico: historicoCronicoInvalido,
+      historicoFamiliar: historicoFamiliarInvalido,
+    })
+
+    if (
+      exameInvalido ||
+      habitosInvalido ||
+      historicoCronicoInvalido ||
+      historicoFamiliarInvalido
+    )
+      return
+    window.print()
   }
 
   return (
@@ -115,6 +155,11 @@ function DocumentGenerator() {
                   </ComboboxList>
                 </ComboboxContent>
               </Combobox>
+              {erros.exameSelecionado && (
+                <p className="mt-1 text-sm text-destructive">
+                  Selecione um Exame antes de Imprimir.
+                </p>
+              )}
             </div>
           </section>
           <section className="mt-6 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -206,6 +251,11 @@ function DocumentGenerator() {
                   </Field>
                 </FieldGroup>
               </FieldSet>
+              {erros.habitos && (
+                <p className="mt-1 text-sm text-destructive">
+                  Selecione pelo menos um hábito antes de Imprimir.
+                </p>
+              )}
             </div>
             <div className="rounded-lg border px-4 pb-4 shadow-sm">
               <FieldSet>
@@ -301,6 +351,11 @@ function DocumentGenerator() {
                   </Field>
                 </FieldGroup>
               </FieldSet>
+              {erros.historicoCronico && (
+                <p className="mt-1 text-sm text-destructive">
+                  Selecione pelo menos um Histórico Crônico antes de Imprimir.
+                </p>
+              )}
             </div>
             <div className="rounded-lg border px-4 pb-4 shadow-sm">
               <FieldSet>
@@ -418,6 +473,11 @@ function DocumentGenerator() {
                   </Field>
                 </FieldGroup>
               </FieldSet>
+              {erros.historicoFamiliar && (
+                <p className="mt-1 text-sm text-destructive">
+                  Selecione pelo menos um Histórico Familiar antes de Imprimir.
+                </p>
+              )}
             </div>
           </section>
           <section>
@@ -452,7 +512,7 @@ function DocumentGenerator() {
             <div className="flex justify-center gap-4 pt-4">
               <Button
                 className="cursor-pointer p-6 text-lg"
-                onClick={() => window.print()}
+                onClick={handleImprimir}
               >
                 Imprimir
               </Button>
